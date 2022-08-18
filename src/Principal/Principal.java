@@ -2,19 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package trabalho01;
+package Principal;
+
+import Interfaces.FormPrincipal;
 
 /**
  *
  * @author Pichau
  */
-public class Trabalho01 {
+public class Principal {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        FormPrincipal tela = new FormPrincipal();
+        tela.setTitle("AUTOMATOS FINITOS");
+        tela.setVisible(true);
+        tela.setLocationRelativeTo(null);
     }
     
 }
