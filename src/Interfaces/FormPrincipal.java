@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import java.awt.event.ItemEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +17,29 @@ public class FormPrincipal extends javax.swing.JFrame {
      * Creates new form FormPrincipal
      */
     public FormPrincipal() {
+
         initComponents();
+        
+        InputSentenca.setText("");
+        
+        
+        COMBOX.removeAllItems();
+        COMBOX.addItem("EXERCÍCIO A");
+        COMBOX.addItem("EXERCÍCIO B");
+        COMBOX.addItem("EXERCÍCIO C");
+        COMBOX.addItem("EXERCÍCIO D");
+        COMBOX.addItem("EXERCÍCIO E");
+        COMBOX.addItem("EXERCÍCIO F");
+        COMBOX.addItem("EXERCÍCIO G");
+        COMBOX.addItem("EXERCÍCIO H");
+        COMBOX.addItem("EXERCÍCIO I");
+        COMBOX.addItem("EXERCÍCIO J");
+        TextArea.setEditable(false);
+      
+        
+        
+        
+        
     }
 
     /**
@@ -28,6 +51,16 @@ public class FormPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        COMBOX = new javax.swing.JComboBox<>();
+        LBLAutomatos = new javax.swing.JLabel();
+        LBLSentencas = new javax.swing.JLabel();
+        InputSentenca = new javax.swing.JTextField();
+        EXECUTAR = new javax.swing.JButton();
+        LIMPAR = new javax.swing.JButton();
+        SetencaReconhecida = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TextArea = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
@@ -35,6 +68,48 @@ public class FormPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(null);
+
+        COMBOX.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        COMBOX.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                COMBOXItemStateChanged(evt);
+            }
+        });
+        COMBOX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COMBOXActionPerformed(evt);
+            }
+        });
+
+        LBLAutomatos.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        LBLAutomatos.setText("AUTOMATOS");
+
+        LBLSentencas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LBLSentencas.setText("Sentença:");
+
+        EXECUTAR.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        EXECUTAR.setText("EXECUTAR");
+
+        LIMPAR.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LIMPAR.setText("LIMPAR");
+        LIMPAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LIMPARActionPerformed(evt);
+            }
+        });
+
+        SetencaReconhecida.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        SetencaReconhecida.setText("Sentença:");
+
+        TextArea.setColumns(20);
+        TextArea.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TextArea.setRows(5);
+        jScrollPane2.setViewportView(TextArea);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENS/information_info_1565.png"))); // NOI18N
         jMenu3.setText("Sobre");
@@ -70,11 +145,55 @@ public class FormPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 666, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(LIMPAR, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EXECUTAR, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SetencaReconhecida, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(LBLSentencas, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(InputSentenca, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
+                        .addComponent(LBLAutomatos)
+                        .addGap(140, 140, 140))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(COMBOX, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 494, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LBLSentencas, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(InputSentenca, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EXECUTAR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LIMPAR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SetencaReconhecida, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addComponent(LBLAutomatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(COMBOX, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -89,6 +208,95 @@ public class FormPrincipal extends javax.swing.JFrame {
         setVisible(false);
 
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
+
+    private void COMBOXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COMBOXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COMBOXActionPerformed
+
+    private void LIMPARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LIMPARActionPerformed
+         InputSentenca.setText("");
+         
+    }//GEN-LAST:event_LIMPARActionPerformed
+
+    private void COMBOXItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_COMBOXItemStateChanged
+          String Enunciadogeral="\n\t         Enunciado" +"\n  E1 = {a, b} \n  E2 = {a, b, c, ... ,z}\n  E3 = {0, 1, 2, ... , 9}\n\n\n";
+          
+          if (evt.getStateChange() == ItemEvent.SELECTED) {
+                String opcao = COMBOX.getSelectedItem().toString();
+                
+                             
+                if(opcao.equals("EXERCÍCIO A")==true)
+                {
+                    String enunciadoopcao="\n  L1 = {w e E1*|w começa com a e termina com b } ";
+                    String Enunciado=Enunciadogeral+enunciadoopcao;
+                    TextArea.setText(Enunciado);
+                }
+                if(opcao.equals("EXERCÍCIO B")==true)
+                {
+                    String enunciadoopcao="\n  L2 = { w e E1* | w possui aaa como subcadeia}";
+                    String Enunciado=Enunciadogeral+enunciadoopcao;
+                    TextArea.setText(Enunciado);
+                }
+                if(opcao.equals("EXERCÍCIO C")==true)
+                {
+                    String enunciadoopcao="\n  L3 = { w e E1* | w  possui baba \n   como prefixo e abab como sufixo}";
+                    String Enunciado=Enunciadogeral+enunciadoopcao;
+                    TextArea.setText(Enunciado);
+                }
+                if(opcao.equals("EXERCÍCIO D")==true)
+                {
+                    String enunciadoopcao="\n  L4 = { w e E1* | w  possui no máximo\n   uma ocorrência da cadeia baba}";
+                    String Enunciado=Enunciadogeral+enunciadoopcao;
+                    TextArea.setText(Enunciado);
+                }
+                if(opcao.equals("EXERCÍCIO E")==true)
+                {
+                   String enunciadoopcao="\n  L5 = { w e E1* | w não possui \n     ocorrência da cadeia baba}";
+                    String Enunciado=Enunciadogeral+enunciadoopcao;
+                    TextArea.setText(Enunciado);
+                }
+                if(opcao.equals("EXERCÍCIO F")==true)
+                {
+                    String enunciadoopcao="\n  L6 = { w e E1* | w possui ocorrência \n   par de a 's seguida\n   por ocorrência impar de b 's}";
+                    String Enunciado=Enunciadogeral+enunciadoopcao;
+                    TextArea.setText(Enunciado);
+                }
+                if(opcao.equals("EXERCÍCIO G")==true)
+                {
+                    String enunciadoopcao="\n  L7 = { w e E2* | w começa com a\n   e possui ocorrência par de a 's\n   ou começa com b e" +
+"\n   possui ocorrência impar de b 's}";
+                    String Enunciado=Enunciadogeral+enunciadoopcao;
+                    TextArea.setText(Enunciado);
+                }
+                 if(opcao.equals("EXERCÍCIO H")==true)
+                {
+                   String enunciadoopcao="\n  L8 = { w e E3* | w inicia-se com 0 e\n   a soma de todos os seus dígitos é par, ou inicia-se\n" +
+"   com 1 e a soma de todos os seus dígitos é impar";
+                    String Enunciado=Enunciadogeral+enunciadoopcao;
+                    TextArea.setText(Enunciado);
+                }
+                if(opcao.equals("EXERCÍCIO I")==true)
+                {
+                     String enunciadoopcao="\n  L9 = { w e (E2 U E3)* | w inicia-se com uma letra,\n  possuindo a seguir qualquer\n" +
+"  combinação de letras e dígitos";
+                    String Enunciado=Enunciadogeral+enunciadoopcao;
+                    TextArea.setText(Enunciado);
+                }
+                if(opcao.equals("EXERCÍCIO J")==true)
+                {
+                    String enunciadoopcao="\n  L10 = { w e E3 U{+,-,e,','}| w é um número inteiro, \n   um número decimal ou um\n" +
+"   número representado em notação científica";
+                    String Enunciado=Enunciadogeral+enunciadoopcao;
+                    TextArea.setText(Enunciado);
+                }
+               
+                
+                
+                
+                
+      
+        } 
+    }//GEN-LAST:event_COMBOXItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -126,10 +334,20 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> COMBOX;
+    private javax.swing.JButton EXECUTAR;
+    private javax.swing.JTextField InputSentenca;
+    private javax.swing.JLabel LBLAutomatos;
+    private javax.swing.JLabel LBLSentencas;
+    private javax.swing.JButton LIMPAR;
     private javax.swing.JMenu Sair;
+    private javax.swing.JLabel SetencaReconhecida;
+    private javax.swing.JTextArea TextArea;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
