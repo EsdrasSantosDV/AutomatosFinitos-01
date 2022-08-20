@@ -19,10 +19,9 @@ public class FormPrincipal extends javax.swing.JFrame {
     public FormPrincipal() {
 
         initComponents();
-        
+
         InputSentenca.setText("");
-        
-        
+
         COMBOX.removeAllItems();
         COMBOX.addItem("EXERCÍCIO A");
         COMBOX.addItem("EXERCÍCIO B");
@@ -35,11 +34,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         COMBOX.addItem("EXERCÍCIO I");
         COMBOX.addItem("EXERCÍCIO J");
         TextArea.setEditable(false);
-      
-        
-        
-        
-        
+
     }
 
     /**
@@ -94,6 +89,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         EXECUTAR.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         EXECUTAR.setText("EXECUTAR");
+        EXECUTAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EXECUTARActionPerformed(evt);
+            }
+        });
 
         LIMPAR.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LIMPAR.setText("LIMPAR");
@@ -180,8 +180,8 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LBLSentencas, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(InputSentenca, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(InputSentenca, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EXECUTAR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LIMPAR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,89 +214,155 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_COMBOXActionPerformed
 
     private void LIMPARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LIMPARActionPerformed
-         InputSentenca.setText("");
-         
+        InputSentenca.setText("");
+
     }//GEN-LAST:event_LIMPARActionPerformed
 
     private void COMBOXItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_COMBOXItemStateChanged
-          String Enunciadogeral="\n\t         Enunciado" +"\n  E1 = {a, b} \n  E2 = {a, b, c, ... ,z}\n  E3 = {0, 1, 2, ... , 9}\n\n\n";
-          
-          if (evt.getStateChange() == ItemEvent.SELECTED) {
-                String opcao = COMBOX.getSelectedItem().toString();
-                
-                             
-                if(opcao.equals("EXERCÍCIO A")==true)
-                {
-                    String enunciadoopcao="\n  L1 = {w e E1*|w começa com a e termina com b } ";
-                    String Enunciado=Enunciadogeral+enunciadoopcao;
-                    TextArea.setText(Enunciado);
-                }
-                if(opcao.equals("EXERCÍCIO B")==true)
-                {
-                    String enunciadoopcao="\n  L2 = { w e E1* | w possui aaa como subcadeia}";
-                    String Enunciado=Enunciadogeral+enunciadoopcao;
-                    TextArea.setText(Enunciado);
-                }
-                if(opcao.equals("EXERCÍCIO C")==true)
-                {
-                    String enunciadoopcao="\n  L3 = { w e E1* | w  possui baba \n   como prefixo e abab como sufixo}";
-                    String Enunciado=Enunciadogeral+enunciadoopcao;
-                    TextArea.setText(Enunciado);
-                }
-                if(opcao.equals("EXERCÍCIO D")==true)
-                {
-                    String enunciadoopcao="\n  L4 = { w e E1* | w  possui no máximo\n   uma ocorrência da cadeia baba}";
-                    String Enunciado=Enunciadogeral+enunciadoopcao;
-                    TextArea.setText(Enunciado);
-                }
-                if(opcao.equals("EXERCÍCIO E")==true)
-                {
-                   String enunciadoopcao="\n  L5 = { w e E1* | w não possui \n     ocorrência da cadeia baba}";
-                    String Enunciado=Enunciadogeral+enunciadoopcao;
-                    TextArea.setText(Enunciado);
-                }
-                if(opcao.equals("EXERCÍCIO F")==true)
-                {
-                    String enunciadoopcao="\n  L6 = { w e E1* | w possui ocorrência \n   par de a 's seguida\n   por ocorrência impar de b 's}";
-                    String Enunciado=Enunciadogeral+enunciadoopcao;
-                    TextArea.setText(Enunciado);
-                }
-                if(opcao.equals("EXERCÍCIO G")==true)
-                {
-                    String enunciadoopcao="\n  L7 = { w e E2* | w começa com a\n   e possui ocorrência par de a 's\n   ou começa com b e" +
-"\n   possui ocorrência impar de b 's}";
-                    String Enunciado=Enunciadogeral+enunciadoopcao;
-                    TextArea.setText(Enunciado);
-                }
-                 if(opcao.equals("EXERCÍCIO H")==true)
-                {
-                   String enunciadoopcao="\n  L8 = { w e E3* | w inicia-se com 0 e\n   a soma de todos os seus dígitos é par, ou inicia-se\n" +
-"   com 1 e a soma de todos os seus dígitos é impar";
-                    String Enunciado=Enunciadogeral+enunciadoopcao;
-                    TextArea.setText(Enunciado);
-                }
-                if(opcao.equals("EXERCÍCIO I")==true)
-                {
-                     String enunciadoopcao="\n  L9 = { w e (E2 U E3)* | w inicia-se com uma letra,\n  possuindo a seguir qualquer\n" +
-"  combinação de letras e dígitos";
-                    String Enunciado=Enunciadogeral+enunciadoopcao;
-                    TextArea.setText(Enunciado);
-                }
-                if(opcao.equals("EXERCÍCIO J")==true)
-                {
-                    String enunciadoopcao="\n  L10 = { w e E3 U{+,-,e,','}| w é um número inteiro, \n   um número decimal ou um\n" +
-"   número representado em notação científica";
-                    String Enunciado=Enunciadogeral+enunciadoopcao;
-                    TextArea.setText(Enunciado);
-                }
-               
-                
-                
-                
-                
-      
-        } 
+        String Enunciadogeral = "\n\t         Enunciado" + "\n  E1 = {a, b} \n  E2 = {a, b, c, ... ,z}\n  E3 = {0, 1, 2, ... , 9}\n\n\n";
+
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            String opcao = COMBOX.getSelectedItem().toString();
+
+            if (opcao.equals("EXERCÍCIO A") == true) {
+                String enunciadoopcao = "\n  L1 = {w e E1*|w começa com a e termina com b } ";
+                String Enunciado = Enunciadogeral + enunciadoopcao;
+
+                TextArea.setText(Enunciado);
+            }
+            if (opcao.equals("EXERCÍCIO B") == true) {
+                String enunciadoopcao = "\n  L2 = { w e E1* | w possui aaa como subcadeia}";
+                String Enunciado = Enunciadogeral + enunciadoopcao;
+                TextArea.setText(Enunciado);
+            }
+            if (opcao.equals("EXERCÍCIO C") == true) {
+                String enunciadoopcao = "\n  L3 = { w e E1* | w  possui baba \n   como prefixo e abab como sufixo}";
+                String Enunciado = Enunciadogeral + enunciadoopcao;
+                TextArea.setText(Enunciado);
+            }
+            if (opcao.equals("EXERCÍCIO D") == true) {
+                String enunciadoopcao = "\n  L4 = { w e E1* | w  possui no máximo\n   uma ocorrência da cadeia baba}";
+                String Enunciado = Enunciadogeral + enunciadoopcao;
+                TextArea.setText(Enunciado);
+            }
+            if (opcao.equals("EXERCÍCIO E") == true) {
+                String enunciadoopcao = "\n  L5 = { w e E1* | w não possui \n     ocorrência da cadeia baba}";
+                String Enunciado = Enunciadogeral + enunciadoopcao;
+                TextArea.setText(Enunciado);
+            }
+            if (opcao.equals("EXERCÍCIO F") == true) {
+                String enunciadoopcao = "\n  L6 = { w e E1* | w possui ocorrência \n   par de a 's seguida\n   por ocorrência impar de b 's}";
+                String Enunciado = Enunciadogeral + enunciadoopcao;
+                TextArea.setText(Enunciado);
+            }
+            if (opcao.equals("EXERCÍCIO G") == true) {
+                String enunciadoopcao = "\n  L7 = { w e E2* | w começa com a\n   e possui ocorrência par de a 's\n   ou começa com b e"
+                        + "\n   possui ocorrência impar de b 's}";
+                String Enunciado = Enunciadogeral + enunciadoopcao;
+                TextArea.setText(Enunciado);
+            }
+            if (opcao.equals("EXERCÍCIO H") == true) {
+                String enunciadoopcao = "\n  L8 = { w e E3* | w inicia-se com 0 e\n   a soma de todos os seus dígitos é par, ou inicia-se\n"
+                        + "   com 1 e a soma de todos os seus dígitos é impar";
+                String Enunciado = Enunciadogeral + enunciadoopcao;
+                TextArea.setText(Enunciado);
+            }
+            if (opcao.equals("EXERCÍCIO I") == true) {
+                String enunciadoopcao = "\n  L9 = { w e (E2 U E3)* | w inicia-se com uma letra,\n  possuindo a seguir qualquer\n"
+                        + "  combinação de letras e dígitos";
+                String Enunciado = Enunciadogeral + enunciadoopcao;
+                TextArea.setText(Enunciado);
+            }
+            if (opcao.equals("EXERCÍCIO J") == true) {
+                String enunciadoopcao = "\n  L10 = { w e E3 U{+,-,e,','}| w é um número inteiro, \n   um número decimal ou um\n"
+                        + "   número representado em notação científica";
+                String Enunciado = Enunciadogeral + enunciadoopcao;
+                TextArea.setText(Enunciado);
+            }
+
+        }
     }//GEN-LAST:event_COMBOXItemStateChanged
+
+    private void EXECUTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EXECUTARActionPerformed
+        String Sentenca = InputSentenca.getText();
+        String E1 = new String("ab");
+
+        int estado = 0;
+        int error = 0;
+
+        for (int ind = 0; ind < Sentenca.length(); ind++) {
+                
+            if (estado == 0) {
+                if(Sentenca.charAt(ind)=='a')
+                {
+                    estado=1;
+                }
+                else
+                {
+                    if(Sentenca.charAt(ind)=='b')
+                    {
+                        estado=3;
+                    }
+                }
+            } else {
+                if (estado == 1) {
+                   if(Sentenca.charAt(ind)=='a')
+                   {
+                       estado=1;
+                   }
+                   else{
+                       
+                       if(Sentenca.charAt(ind)=='b')
+                       {
+                           estado=2;
+                       }
+                       else
+                       {
+                           estado=0;
+                       }
+                   }
+                   
+                  
+                } else {
+                    if (estado == 2) {
+                       if(Sentenca.charAt(ind)=='a')
+                        {
+                            estado=1;
+                            
+                        }
+                       else
+                       {
+                           estado=0;
+                       }    
+                        
+                        
+                    } else {
+                        if (estado == 3) {
+                            if(Sentenca.charAt(ind)=='b'||Sentenca.charAt(ind)=='a')
+                            {
+                                estado=3;
+                            } 
+                            else{
+                                estado=0;
+                            }
+                        }
+
+                    }
+                }
+
+            }
+            System.out.println("\nLETRA:"+Sentenca.charAt(ind)+"  ESTADO"+estado);
+        }
+        
+        System.out.println("");
+        if (estado == 2) {
+            SetencaReconhecida.setText("Sentenca Reconhecida");
+        } else {
+            SetencaReconhecida.setText("Sentenca não Reconhecida");
+        }
+
+
+    }//GEN-LAST:event_EXECUTARActionPerformed
 
     /**
      * @param args the command line arguments
