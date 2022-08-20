@@ -46,7 +46,6 @@ public class FormPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
         COMBOX = new javax.swing.JComboBox<>();
         LBLAutomatos = new javax.swing.JLabel();
         LBLSentencas = new javax.swing.JLabel();
@@ -56,6 +55,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         SetencaReconhecida = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TextArea = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Reconhecimento = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
@@ -63,11 +64,6 @@ public class FormPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(null);
 
         COMBOX.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         COMBOX.addItemListener(new java.awt.event.ItemListener() {
@@ -110,6 +106,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         TextArea.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         TextArea.setRows(5);
         jScrollPane2.setViewportView(TextArea);
+
+        Reconhecimento.setColumns(20);
+        Reconhecimento.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Reconhecimento.setRows(5);
+        jScrollPane3.setViewportView(Reconhecimento);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENS/information_info_1565.png"))); // NOI18N
         jMenu3.setText("Sobre");
@@ -165,10 +166,10 @@ public class FormPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
                         .addComponent(LBLAutomatos)
                         .addGap(140, 140, 140))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane3)
                             .addComponent(COMBOX, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
@@ -192,8 +193,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addComponent(LBLAutomatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(COMBOX, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -268,7 +270,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 TextArea.setText(Enunciado);
             }
             if (opcao.equals("EXERCÍCIO I") == true) {
-                String enunciadoopcao = "\n  L9 = { w e (E2 U E3)* | w inicia-se com uma letra,\n  possuindo a seguir qualquer\n"
+                String enunciadoopcao = "\n  L9 = { w e (E2 U E3)* | w inicia-se com uma letra,\n  possuposo a seguir qualquer\n"
                         + "  combinação de letras e dígitos";
                 String Enunciado = Enunciadogeral + enunciadoopcao;
                 TextArea.setText(Enunciado);
@@ -285,80 +287,452 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     private void EXECUTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EXECUTARActionPerformed
         String Sentenca = InputSentenca.getText();
-        String E1 = new String("ab");
 
         int estado = 0;
         int error = 0;
+        String E1 = new String("ab");
+        String E2=new String("abcdefghijklmnopqrstuvxwyz");
+        String E3=new String("0123456789");
 
-        for (int ind = 0; ind < Sentenca.length(); ind++) {
-                
-            if (estado == 0) {
-                if(Sentenca.charAt(ind)=='a')
-                {
-                    estado=1;
-                }
-                else
-                {
-                    if(Sentenca.charAt(ind)=='b')
-                    {
-                        estado=3;
-                    }
-                }
-            } else {
-                if (estado == 1) {
-                   if(Sentenca.charAt(ind)=='a')
-                   {
-                       estado=1;
-                   }
-                   else{
-                       
-                       if(Sentenca.charAt(ind)=='b')
-                       {
-                           estado=2;
-                       }
-                       else
-                       {
-                           estado=0;
-                       }
-                   }
-                   
-                  
-                } else {
-                    if (estado == 2) {
-                       if(Sentenca.charAt(ind)=='a')
-                        {
-                            estado=1;
-                            
-                        }
-                       else
-                       {
-                           estado=0;
-                       }    
-                        
-                        
+        String opcao = COMBOX.getSelectedItem().toString();
+
+        if (opcao.equals("EXERCÍCIO A") == true) {
+            String texto1 = "                    EXERCICIO A\n\nSENTENÇA:" + Sentenca + "\n\n";
+            for (int pos = 0; pos < Sentenca.length(); pos++) {
+                String texto2 = "q" + estado + "->";
+                if (estado == 0) {
+                    if (Sentenca.charAt(pos) == 'a') {
+                        estado = 1;
                     } else {
-                        if (estado == 3) {
-                            if(Sentenca.charAt(ind)=='b'||Sentenca.charAt(ind)=='a')
-                            {
-                                estado=3;
-                            } 
-                            else{
-                                estado=0;
+                        if (Sentenca.charAt(pos) == 'b') {
+                            estado = 3;
+                        }
+                    }
+                } else {
+                    if (estado == 1) {
+                        if (Sentenca.charAt(pos) == 'a') {
+                            estado = 1;
+                        } else {
+
+                            if (Sentenca.charAt(pos) == 'b') {
+                                estado = 2;
+                            } else {
+                                estado = 0;
+                            }
+                        }
+
+                    } else {
+                        if (estado == 2) {
+                            if (Sentenca.charAt(pos) == 'a') {
+                                estado = 1;
+
+                            } else {
+                                if (Sentenca.charAt(pos) == 'b') {
+                                    estado = 2;
+                                } else {
+                                    estado = 0;
+                                }
+                            }
+
+                        } else {
+                            if (estado == 3) {
+                                if (Sentenca.charAt(pos) == 'b' || Sentenca.charAt(pos) == 'a') {
+                                    estado = 3;
+                                } else {
+                                    estado = 0;
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+
+                String texto3 = "q" + estado + "\n";
+                texto1 = texto1 + (texto2 + texto3);
+            }
+
+            System.out.println("");
+            if (estado == 2) {
+                SetencaReconhecida.setText("Sentenca Reconhecida");
+                texto1 = texto1 + "\nSentenca Reconhecida";
+            } else {
+                SetencaReconhecida.setText("Sentenca não Reconhecida");
+                texto1 = texto1 + "\nSentenca não Reconhecida";
+            }
+
+            Reconhecimento.setText(texto1);
+
+        }
+        if (opcao.equals("EXERCÍCIO B") == true) {
+            String texto1 = "                    EXERCICIO B\n\nSENTENÇA:" + Sentenca + "\n\n";
+            for (int pos = 0; pos < Sentenca.length(); pos++) {
+                String texto2 = "q" + estado + "->";
+
+                //ESTADO 0
+                if (estado == 0) {
+                    if (Sentenca.charAt(pos) == 'a') {
+                        estado = 1;
+                    } else {
+                        if (Sentenca.charAt(pos) == 'b') {
+                            estado = 0;
+                        }
+                    }
+                } else {
+                    if (estado == 1) {
+                        if (Sentenca.charAt(pos) == 'a') {
+                            estado = 2;
+                        } else {
+                            if (Sentenca.charAt(pos) == 'b') {
+                                estado = 0;
+                            }
+                        }
+                    } else {
+                        if (estado == 2) {
+                            if (Sentenca.charAt(pos) == 'a') {
+                                estado = 3;
+                            } else {
+                                if (Sentenca.charAt(pos) == 'b') {
+                                    estado = 0;
+                                }
+                            }
+                        } else {
+                            if (estado == 3) {
+                                if (Sentenca.charAt(pos) == 'a') {
+                                    estado = 3;
+                                } else {
+                                    if (Sentenca.charAt(pos) == 'b') {
+                                        estado = 3;
+                                    }
+                                }
                             }
                         }
 
                     }
                 }
 
+                String texto3 = "q" + estado + "\n";
+                texto1 = texto1 + (texto2 + texto3);
             }
-            System.out.println("\nLETRA:"+Sentenca.charAt(ind)+"  ESTADO"+estado);
+
+            System.out.println("");
+            if (estado == 3) {
+                SetencaReconhecida.setText("Sentenca Reconhecida");
+                texto1 = texto1 + "\nSentenca Reconhecida";
+            } else {
+                SetencaReconhecida.setText("Sentenca não Reconhecida");
+                texto1 = texto1 + "\nSentenca não Reconhecida";
+            }
+
+            Reconhecimento.setText(texto1);
         }
-        
-        System.out.println("");
-        if (estado == 2) {
-            SetencaReconhecida.setText("Sentenca Reconhecida");
-        } else {
-            SetencaReconhecida.setText("Sentenca não Reconhecida");
+        if (opcao.equals("EXERCÍCIO C") == true) {
+            String texto1 = "                    EXERCICIO C\n\nSENTENÇA:" + Sentenca + "\n\n";
+            for (int pos = 0; pos < Sentenca.length(); pos++) {
+                String texto2 = "q" + estado + "->";
+                //ESTADO 0
+                if (estado == 0) {
+                    if (Sentenca.charAt(pos) == 'a') {
+                        estado = 8;
+                    } else {
+                        if (Sentenca.charAt(pos) == 'b') {
+                            estado = 1;
+                        }
+                    }
+                } else {
+                    //ESTADO 1
+                    if (estado == 1) {
+                        if (Sentenca.charAt(pos) == 'a') {
+                            estado = 2;
+                        } else {
+                            if (Sentenca.charAt(pos) == 'b') {
+                                estado = 8;
+                            }
+                        }
+                    } else {
+                        //ESTADO 2
+                        if (estado == 2) {
+                            if (Sentenca.charAt(pos) == 'a') {
+                                estado = 8;
+                            } else {
+                                if (Sentenca.charAt(pos) == 'b') {
+                                    estado = 3;
+                                }
+                            }
+                        } else {
+                            //ESTADO 3
+                            if (estado == 3) {
+                                if (Sentenca.charAt(pos) == 'a') {
+                                    estado = 4;
+                                } else {
+                                    if (Sentenca.charAt(pos) == 'b') {
+                                        estado = 8;
+                                    }
+                                }
+                            } else {
+                                //ESTADO 4
+                                if (estado == 4) {
+                                    if (Sentenca.charAt(pos) == 'a') {
+                                        estado = 4;
+                                    } else {
+                                        if (Sentenca.charAt(pos) == 'b') {
+                                            estado = 5;
+                                        }
+                                    }
+                                } else {
+                                    //ESTADO 5
+                                    if (estado == 5) {
+                                        if (Sentenca.charAt(pos) == 'a') {
+                                            estado = 6;
+                                        } else {
+                                            if (Sentenca.charAt(pos) == 'b') {
+                                                estado = 4;
+                                            }
+                                        }
+                                    } else {
+                                        //ESTADO 6
+                                        if (estado == 6) {
+                                            if (Sentenca.charAt(pos) == 'a') {
+                                                estado = 4;
+                                            } else {
+                                                if (Sentenca.charAt(pos) == 'b') {
+                                                    estado = 7;
+                                                }
+                                            }
+                                        } else {
+                                            //ESTADO 7
+                                            if (estado == 7) {
+                                                if (Sentenca.charAt(pos) == 'a') {
+                                                    estado = 6;
+                                                } else {
+                                                    if (Sentenca.charAt(pos) == 'b') {
+                                                        estado = 5;
+                                                    }
+                                                }
+                                            } else {
+                                                //ESTADO 8
+                                                if (estado == 8) {
+                                                    if (Sentenca.charAt(pos) == 'a') {
+                                                        estado = 8;
+                                                    } else {
+                                                        if (Sentenca.charAt(pos) == 'b') {
+                                                            estado = 8;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                String texto3 = "q" + estado + "\n";
+                texto1 = texto1 + (texto2 + texto3);
+            }
+            System.out.println("");
+            if (estado == 7) {
+                SetencaReconhecida.setText("Sentenca Reconhecida");
+                texto1 = texto1 + "\nSentenca Reconhecida";
+            } else {
+                SetencaReconhecida.setText("Sentenca não Reconhecida");
+                texto1 = texto1 + "\nSentenca não Reconhecida";
+            }
+            Reconhecimento.setText(texto1);
+        }
+        if (opcao.equals("EXERCÍCIO D") == true) {
+            String texto1 = "                    EXERCICIO D\n\nSENTENÇA:" + Sentenca + "\n\n";
+            for (int pos = 0; pos < Sentenca.length(); pos++) {
+                String texto2 = "q" + estado + "->";
+
+                String texto3 = "q" + estado + "\n";
+                texto1 = texto1 + (texto2 + texto3);
+            }
+            System.out.println("");
+            if (estado == 7) {
+                SetencaReconhecida.setText("Sentenca Reconhecida");
+                texto1 = texto1 + "\nSentenca Reconhecida";
+            } else {
+                SetencaReconhecida.setText("Sentenca não Reconhecida");
+                texto1 = texto1 + "\nSentenca não Reconhecida";
+            }
+            Reconhecimento.setText(texto1);
+
+        }
+        if (opcao.equals("EXERCÍCIO E") == true) {
+            String texto1 = "                    EXERCICIO E\n\nSENTENÇA:" + Sentenca + "\n\n";
+            for (int pos = 0; pos < Sentenca.length(); pos++) {
+                String texto2 = "q" + estado + "->";
+                //ESTADO 0
+                if (estado == 0) {
+                    if (Sentenca.charAt(pos) == 'a') {
+                        estado = 0;
+                    } else {
+                        if (Sentenca.charAt(pos) == 'b') {
+                            estado = 1;
+                        }
+                    }
+                } else {
+                    //ESTADO 1
+                    if (estado == 1) {
+                        if (Sentenca.charAt(pos) == 'a') {
+                            estado = 2;
+                        } else {
+                            if (Sentenca.charAt(pos) == 'b') {
+                                estado = 1;
+                            }
+                        }
+                    } else {
+                        //ESTADO 2
+                        if (estado == 2) {
+                            if (Sentenca.charAt(pos) == 'a') {
+                                estado = 1;
+                            } else {
+                                if (Sentenca.charAt(pos) == 'b') {
+                                    estado = 3;
+                                }
+                            }
+                        } else {
+                            //ESTADO 3
+                            if (estado == 3) {
+                                if (Sentenca.charAt(pos) == 'a') {
+                                    estado = 4;
+                                } else {
+                                    if (Sentenca.charAt(pos) == 'b') {
+                                        estado = 1;
+                                    }
+                                }
+                            } else {
+                                //ESTADO 4
+                                if (estado == 4) {
+                                    if (Sentenca.charAt(pos) == 'a') {
+                                        estado = 4;
+                                    } else {
+                                        if (Sentenca.charAt(pos) == 'b') {
+                                            estado = 4;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                String texto3 = "q" + estado + "\n";
+                texto1 = texto1 + (texto2 + texto3);
+            }
+            System.out.println("");
+            //ESTADOS FINAIS DE ACEITAÇÃO
+            if (estado == 0 || estado == 1 || estado == 2 || estado == 3) {
+                SetencaReconhecida.setText("Sentenca Reconhecida");
+                texto1 = texto1 + "\nSentenca Reconhecida";
+            } else {
+                SetencaReconhecida.setText("Sentenca não Reconhecida");
+                texto1 = texto1 + "\nSentenca não Reconhecida";
+            }
+            Reconhecimento.setText(texto1);
+        }
+        if (opcao.equals("EXERCÍCIO F") == true) {
+            String texto1 = "                    EXERCICIO F\n\nSENTENÇA:" + Sentenca + "\n\n";
+            for (int pos = 0; pos < Sentenca.length(); pos++) {
+                String texto2 = "q" + estado + "->";
+                //ESTADO 0
+                if (estado == 0) {
+                    if (Sentenca.charAt(pos) == 'a') {
+                        estado = 3;
+                    } else {
+                        if (Sentenca.charAt(pos) == 'b') {
+                            estado = 1;
+                        }
+                    }
+                } else {
+                    //ESTADO 1
+                    if (estado == 1) {
+                        if (Sentenca.charAt(pos) == 'a') {
+                            estado = 2;
+                        } else {
+                            if (Sentenca.charAt(pos) == 'b') {
+                                estado = 3;
+                            }
+                        }
+                    } else {
+                        //ESTADO 2
+                        if (estado == 2) {
+                            if (Sentenca.charAt(pos) == 'a') {
+                                estado = 3;
+                            } else {
+                                if (Sentenca.charAt(pos) == 'b') {
+                                    estado = 1;
+                                }
+                            }
+                        } else {
+                            //ESTADO 3
+                            if (estado == 3) {
+                                if (Sentenca.charAt(pos) == 'a') {
+                                    estado = 3;
+                                } else {
+                                    if (Sentenca.charAt(pos) == 'b') {
+                                        estado = 3;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                String texto3 = "q" + estado + "\n";
+                texto1 = texto1 + (texto2 + texto3);
+            }
+            System.out.println("");
+            //ESTADOS FINAIS DE ACEITAÇÃO
+            if (estado == 1) {
+                SetencaReconhecida.setText("Sentenca Reconhecida");
+                texto1 = texto1 + "\nSentenca Reconhecida";
+            } else {
+                SetencaReconhecida.setText("Sentenca não Reconhecida");
+                texto1 = texto1 + "\nSentenca não Reconhecida";
+            }
+            Reconhecimento.setText(texto1);
+        }
+        if (opcao.equals("EXERCÍCIO G") == true) {
+
+        }
+        if (opcao.equals("EXERCÍCIO H") == true) {
+
+        }
+        if (opcao.equals("EXERCÍCIO I") == true) {
+            String texto1 = "                    EXERCICIO I\n\nSENTENÇA:" + Sentenca + "\n\n";
+            for (int pos = 0; pos < Sentenca.length(); pos++) {
+                String texto2 = "q" + estado + "->";
+                //ESTADO 0
+                if (estado == 0) {
+                    
+                } else {
+                    //ESTADO 1
+                    if (estado == 1) {
+                        
+                    } else {
+                        //ESTADO 2
+                        if (estado == 2) {
+                            
+                        } 
+                    }
+                }
+                String texto3 = "q" + estado + "\n";
+                texto1 = texto1 + (texto2 + texto3);
+            }
+            System.out.println("");
+            //ESTADOS FINAIS DE ACEITAÇÃO
+            if (estado == 1) {
+                SetencaReconhecida.setText("Sentenca Reconhecida");
+                texto1 = texto1 + "\nSentenca Reconhecida";
+            } else {
+                SetencaReconhecida.setText("Sentenca não Reconhecida");
+                texto1 = texto1 + "\nSentenca não Reconhecida";
+            }
+            Reconhecimento.setText(texto1);
+        }
+        if (opcao.equals("EXERCÍCIO J") == true) {
+
         }
 
 
@@ -406,14 +780,15 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel LBLAutomatos;
     private javax.swing.JLabel LBLSentencas;
     private javax.swing.JButton LIMPAR;
+    private javax.swing.JTextArea Reconhecimento;
     private javax.swing.JMenu Sair;
     private javax.swing.JLabel SetencaReconhecida;
     private javax.swing.JTextArea TextArea;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }
