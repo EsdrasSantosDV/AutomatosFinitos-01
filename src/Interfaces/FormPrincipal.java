@@ -291,8 +291,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         int estado = 0;
         int error = 0;
         String E1 = new String("ab");
-        String E2=new String("abcdefghijklmnopqrstuvxwyz");
-        String E3=new String("0123456789");
+        String E2 = new String("abcdefghijklmnopqrstuvxwyz");
+        String E3 = new String("0123456789");
 
         String opcao = COMBOX.getSelectedItem().toString();
 
@@ -360,7 +360,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 SetencaReconhecida.setText("Sentenca não Reconhecida");
                 texto1 = texto1 + "\nSentenca não Reconhecida";
             }
-
+            
             Reconhecimento.setText(texto1);
 
         }
