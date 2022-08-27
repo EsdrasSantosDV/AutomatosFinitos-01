@@ -10,6 +10,7 @@ package Principal;
  * cada exercício. O método recebe uma String, e retorna uma variável do tipo
  * "Resposta"
  */
+
 public final class Automatos {
     
     //Exercicio A =============================================================
@@ -71,7 +72,7 @@ public final class Automatos {
         }
 
         Resposta resposta = new Resposta("", false);
-        if (estado == 3) {
+        if (estado == 2) {
             texto1 = texto1 + "\nSentenca Reconhecida";
             resposta.textoResposta = texto1;
             resposta.cadeiaAceita = true;
@@ -136,7 +137,7 @@ public final class Automatos {
         }
 
         Resposta resposta = new Resposta("", false);
-        if (estado == 2) {
+        if (estado == 3) {
             texto1 = texto1 + "\nSentenca Reconhecida";
             resposta.textoResposta = texto1;
             resposta.cadeiaAceita = true;
