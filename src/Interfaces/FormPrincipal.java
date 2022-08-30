@@ -4,8 +4,10 @@
  */
 package Interfaces;
 
+import Principal.Resposta;
 import java.awt.event.ItemEvent;
 import javax.swing.JOptionPane;
+import Principal.Automatos;
 
 /**
  *
@@ -290,408 +292,57 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         int estado = 0;
         int error = 0;
+        
+        Resposta resposta = new Resposta("",false);
+        Automatos automatos = new Automatos();
+        
         String E1 = new String("ab");
-        String E2=new String("abcdefghijklmnopqrstuvxwyz");
-        String E3=new String("0123456789");
+        String E2 = new String("abcdefghijklmnopqrstuvxwyz");
+        String E3 = new String("0123456789");
 
         String opcao = COMBOX.getSelectedItem().toString();
 
         if (opcao.equals("EXERCÍCIO A") == true) {
-            String texto1 = "                    EXERCICIO A\n\nSENTENÇA:" + Sentenca + "\n\n";
-            for (int pos = 0; pos < Sentenca.length(); pos++) {
-                String texto2 = "q" + estado + "->";
-                if (estado == 0) {
-                    if (Sentenca.charAt(pos) == 'a') {
-                        estado = 1;
-                    } else {
-                        if (Sentenca.charAt(pos) == 'b') {
-                            estado = 3;
-                        }
-                    }
-                } else {
-                    if (estado == 1) {
-                        if (Sentenca.charAt(pos) == 'a') {
-                            estado = 1;
-                        } else {
-
-                            if (Sentenca.charAt(pos) == 'b') {
-                                estado = 2;
-                            } else {
-                                estado = 0;
-                            }
-                        }
-
-                    } else {
-                        if (estado == 2) {
-                            if (Sentenca.charAt(pos) == 'a') {
-                                estado = 1;
-
-                            } else {
-                                if (Sentenca.charAt(pos) == 'b') {
-                                    estado = 2;
-                                } else {
-                                    estado = 0;
-                                }
-                            }
-
-                        } else {
-                            if (estado == 3) {
-                                if (Sentenca.charAt(pos) == 'b' || Sentenca.charAt(pos) == 'a') {
-                                    estado = 3;
-                                } else {
-                                    estado = 0;
-                                }
-                            }
-
-                        }
-                    }
-
-                }
-
-                String texto3 = "q" + estado + "\n";
-                texto1 = texto1 + (texto2 + texto3);
-            }
-
-            System.out.println("");
-            if (estado == 2) {
-                SetencaReconhecida.setText("Sentenca Reconhecida");
-                texto1 = texto1 + "\nSentenca Reconhecida";
-            } else {
-                SetencaReconhecida.setText("Sentenca não Reconhecida");
-                texto1 = texto1 + "\nSentenca não Reconhecida";
-            }
-
-            Reconhecimento.setText(texto1);
-
+            resposta = automatos.exercicio_a(Sentenca);
+            
+            Reconhecimento.setText(resposta.textoResposta);
+            if(resposta.cadeiaAceita) SetencaReconhecida.setText("Sentenca Reconhecida");
+            else SetencaReconhecida.setText("Sentenca não Reconhecida");
         }
         if (opcao.equals("EXERCÍCIO B") == true) {
-            String texto1 = "                    EXERCICIO B\n\nSENTENÇA:" + Sentenca + "\n\n";
-            for (int pos = 0; pos < Sentenca.length(); pos++) {
-                String texto2 = "q" + estado + "->";
-
-                //ESTADO 0
-                if (estado == 0) {
-                    if (Sentenca.charAt(pos) == 'a') {
-                        estado = 1;
-                    } else {
-                        if (Sentenca.charAt(pos) == 'b') {
-                            estado = 0;
-                        }
-                    }
-                } else {
-                    if (estado == 1) {
-                        if (Sentenca.charAt(pos) == 'a') {
-                            estado = 2;
-                        } else {
-                            if (Sentenca.charAt(pos) == 'b') {
-                                estado = 0;
-                            }
-                        }
-                    } else {
-                        if (estado == 2) {
-                            if (Sentenca.charAt(pos) == 'a') {
-                                estado = 3;
-                            } else {
-                                if (Sentenca.charAt(pos) == 'b') {
-                                    estado = 0;
-                                }
-                            }
-                        } else {
-                            if (estado == 3) {
-                                if (Sentenca.charAt(pos) == 'a') {
-                                    estado = 3;
-                                } else {
-                                    if (Sentenca.charAt(pos) == 'b') {
-                                        estado = 3;
-                                    }
-                                }
-                            }
-                        }
-
-                    }
-                }
-
-                String texto3 = "q" + estado + "\n";
-                texto1 = texto1 + (texto2 + texto3);
-            }
-
-            System.out.println("");
-            if (estado == 3) {
-                SetencaReconhecida.setText("Sentenca Reconhecida");
-                texto1 = texto1 + "\nSentenca Reconhecida";
-            } else {
-                SetencaReconhecida.setText("Sentenca não Reconhecida");
-                texto1 = texto1 + "\nSentenca não Reconhecida";
-            }
-
-            Reconhecimento.setText(texto1);
+            resposta = automatos.exercicio_b(Sentenca);
+            
+            Reconhecimento.setText(resposta.textoResposta);
+            if(resposta.cadeiaAceita) SetencaReconhecida.setText("Sentenca Reconhecida");
+            else SetencaReconhecida.setText("Sentenca não Reconhecida");
         }
         if (opcao.equals("EXERCÍCIO C") == true) {
-            String texto1 = "                    EXERCICIO C\n\nSENTENÇA:" + Sentenca + "\n\n";
-            for (int pos = 0; pos < Sentenca.length(); pos++) {
-                String texto2 = "q" + estado + "->";
-                //ESTADO 0
-                if (estado == 0) {
-                    if (Sentenca.charAt(pos) == 'a') {
-                        estado = 8;
-                    } else {
-                        if (Sentenca.charAt(pos) == 'b') {
-                            estado = 1;
-                        }
-                    }
-                } else {
-                    //ESTADO 1
-                    if (estado == 1) {
-                        if (Sentenca.charAt(pos) == 'a') {
-                            estado = 2;
-                        } else {
-                            if (Sentenca.charAt(pos) == 'b') {
-                                estado = 8;
-                            }
-                        }
-                    } else {
-                        //ESTADO 2
-                        if (estado == 2) {
-                            if (Sentenca.charAt(pos) == 'a') {
-                                estado = 8;
-                            } else {
-                                if (Sentenca.charAt(pos) == 'b') {
-                                    estado = 3;
-                                }
-                            }
-                        } else {
-                            //ESTADO 3
-                            if (estado == 3) {
-                                if (Sentenca.charAt(pos) == 'a') {
-                                    estado = 4;
-                                } else {
-                                    if (Sentenca.charAt(pos) == 'b') {
-                                        estado = 8;
-                                    }
-                                }
-                            } else {
-                                //ESTADO 4
-                                if (estado == 4) {
-                                    if (Sentenca.charAt(pos) == 'a') {
-                                        estado = 4;
-                                    } else {
-                                        if (Sentenca.charAt(pos) == 'b') {
-                                            estado = 5;
-                                        }
-                                    }
-                                } else {
-                                    //ESTADO 5
-                                    if (estado == 5) {
-                                        if (Sentenca.charAt(pos) == 'a') {
-                                            estado = 6;
-                                        } else {
-                                            if (Sentenca.charAt(pos) == 'b') {
-                                                estado = 4;
-                                            }
-                                        }
-                                    } else {
-                                        //ESTADO 6
-                                        if (estado == 6) {
-                                            if (Sentenca.charAt(pos) == 'a') {
-                                                estado = 4;
-                                            } else {
-                                                if (Sentenca.charAt(pos) == 'b') {
-                                                    estado = 7;
-                                                }
-                                            }
-                                        } else {
-                                            //ESTADO 7
-                                            if (estado == 7) {
-                                                if (Sentenca.charAt(pos) == 'a') {
-                                                    estado = 6;
-                                                } else {
-                                                    if (Sentenca.charAt(pos) == 'b') {
-                                                        estado = 5;
-                                                    }
-                                                }
-                                            } else {
-                                                //ESTADO 8
-                                                if (estado == 8) {
-                                                    if (Sentenca.charAt(pos) == 'a') {
-                                                        estado = 8;
-                                                    } else {
-                                                        if (Sentenca.charAt(pos) == 'b') {
-                                                            estado = 8;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                String texto3 = "q" + estado + "\n";
-                texto1 = texto1 + (texto2 + texto3);
-            }
-            System.out.println("");
-            if (estado == 7) {
-                SetencaReconhecida.setText("Sentenca Reconhecida");
-                texto1 = texto1 + "\nSentenca Reconhecida";
-            } else {
-                SetencaReconhecida.setText("Sentenca não Reconhecida");
-                texto1 = texto1 + "\nSentenca não Reconhecida";
-            }
-            Reconhecimento.setText(texto1);
+            resposta = automatos.exercicio_c(Sentenca);
+            
+            Reconhecimento.setText(resposta.textoResposta);
+            if(resposta.cadeiaAceita) SetencaReconhecida.setText("Sentenca Reconhecida");
+            else SetencaReconhecida.setText("Sentenca não Reconhecida");
         }
         if (opcao.equals("EXERCÍCIO D") == true) {
-            String texto1 = "                    EXERCICIO D\n\nSENTENÇA:" + Sentenca + "\n\n";
-            for (int pos = 0; pos < Sentenca.length(); pos++) {
-                String texto2 = "q" + estado + "->";
-
-                String texto3 = "q" + estado + "\n";
-                texto1 = texto1 + (texto2 + texto3);
-            }
-            System.out.println("");
-            if (estado == 7) {
-                SetencaReconhecida.setText("Sentenca Reconhecida");
-                texto1 = texto1 + "\nSentenca Reconhecida";
-            } else {
-                SetencaReconhecida.setText("Sentenca não Reconhecida");
-                texto1 = texto1 + "\nSentenca não Reconhecida";
-            }
-            Reconhecimento.setText(texto1);
-
+            resposta = automatos.exercicio_d(Sentenca);
+            
+            Reconhecimento.setText(resposta.textoResposta);
+            if(resposta.cadeiaAceita) SetencaReconhecida.setText("Sentenca Reconhecida");
+            else SetencaReconhecida.setText("Sentenca não Reconhecida");
         }
         if (opcao.equals("EXERCÍCIO E") == true) {
-            String texto1 = "                    EXERCICIO E\n\nSENTENÇA:" + Sentenca + "\n\n";
-            for (int pos = 0; pos < Sentenca.length(); pos++) {
-                String texto2 = "q" + estado + "->";
-                //ESTADO 0
-                if (estado == 0) {
-                    if (Sentenca.charAt(pos) == 'a') {
-                        estado = 0;
-                    } else {
-                        if (Sentenca.charAt(pos) == 'b') {
-                            estado = 1;
-                        }
-                    }
-                } else {
-                    //ESTADO 1
-                    if (estado == 1) {
-                        if (Sentenca.charAt(pos) == 'a') {
-                            estado = 2;
-                        } else {
-                            if (Sentenca.charAt(pos) == 'b') {
-                                estado = 1;
-                            }
-                        }
-                    } else {
-                        //ESTADO 2
-                        if (estado == 2) {
-                            if (Sentenca.charAt(pos) == 'a') {
-                                estado = 1;
-                            } else {
-                                if (Sentenca.charAt(pos) == 'b') {
-                                    estado = 3;
-                                }
-                            }
-                        } else {
-                            //ESTADO 3
-                            if (estado == 3) {
-                                if (Sentenca.charAt(pos) == 'a') {
-                                    estado = 4;
-                                } else {
-                                    if (Sentenca.charAt(pos) == 'b') {
-                                        estado = 1;
-                                    }
-                                }
-                            } else {
-                                //ESTADO 4
-                                if (estado == 4) {
-                                    if (Sentenca.charAt(pos) == 'a') {
-                                        estado = 4;
-                                    } else {
-                                        if (Sentenca.charAt(pos) == 'b') {
-                                            estado = 4;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                String texto3 = "q" + estado + "\n";
-                texto1 = texto1 + (texto2 + texto3);
-            }
-            System.out.println("");
-            //ESTADOS FINAIS DE ACEITAÇÃO
-            if (estado == 0 || estado == 1 || estado == 2 || estado == 3) {
-                SetencaReconhecida.setText("Sentenca Reconhecida");
-                texto1 = texto1 + "\nSentenca Reconhecida";
-            } else {
-                SetencaReconhecida.setText("Sentenca não Reconhecida");
-                texto1 = texto1 + "\nSentenca não Reconhecida";
-            }
-            Reconhecimento.setText(texto1);
+            resposta = automatos.exercicio_e(Sentenca);
+            
+            Reconhecimento.setText(resposta.textoResposta);
+            if(resposta.cadeiaAceita) SetencaReconhecida.setText("Sentenca Reconhecida");
+            else SetencaReconhecida.setText("Sentenca não Reconhecida");
         }
         if (opcao.equals("EXERCÍCIO F") == true) {
-            String texto1 = "                    EXERCICIO F\n\nSENTENÇA:" + Sentenca + "\n\n";
-            for (int pos = 0; pos < Sentenca.length(); pos++) {
-                String texto2 = "q" + estado + "->";
-                //ESTADO 0
-                if (estado == 0) {
-                    if (Sentenca.charAt(pos) == 'a') {
-                        estado = 3;
-                    } else {
-                        if (Sentenca.charAt(pos) == 'b') {
-                            estado = 1;
-                        }
-                    }
-                } else {
-                    //ESTADO 1
-                    if (estado == 1) {
-                        if (Sentenca.charAt(pos) == 'a') {
-                            estado = 2;
-                        } else {
-                            if (Sentenca.charAt(pos) == 'b') {
-                                estado = 3;
-                            }
-                        }
-                    } else {
-                        //ESTADO 2
-                        if (estado == 2) {
-                            if (Sentenca.charAt(pos) == 'a') {
-                                estado = 3;
-                            } else {
-                                if (Sentenca.charAt(pos) == 'b') {
-                                    estado = 1;
-                                }
-                            }
-                        } else {
-                            //ESTADO 3
-                            if (estado == 3) {
-                                if (Sentenca.charAt(pos) == 'a') {
-                                    estado = 3;
-                                } else {
-                                    if (Sentenca.charAt(pos) == 'b') {
-                                        estado = 3;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                String texto3 = "q" + estado + "\n";
-                texto1 = texto1 + (texto2 + texto3);
-            }
-            System.out.println("");
-            //ESTADOS FINAIS DE ACEITAÇÃO
-            if (estado == 1) {
-                SetencaReconhecida.setText("Sentenca Reconhecida");
-                texto1 = texto1 + "\nSentenca Reconhecida";
-            } else {
-                SetencaReconhecida.setText("Sentenca não Reconhecida");
-                texto1 = texto1 + "\nSentenca não Reconhecida";
-            }
-            Reconhecimento.setText(texto1);
+            resposta = automatos.exercicio_f(Sentenca);
+            
+            Reconhecimento.setText(resposta.textoResposta);
+            if(resposta.cadeiaAceita) SetencaReconhecida.setText("Sentenca Reconhecida");
+            else SetencaReconhecida.setText("Sentenca não Reconhecida");
         }
         if (opcao.equals("EXERCÍCIO G") == true) {
 
@@ -700,36 +351,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         }
         if (opcao.equals("EXERCÍCIO I") == true) {
-            String texto1 = "                    EXERCICIO I\n\nSENTENÇA:" + Sentenca + "\n\n";
-            for (int pos = 0; pos < Sentenca.length(); pos++) {
-                String texto2 = "q" + estado + "->";
-                //ESTADO 0
-                if (estado == 0) {
-                    
-                } else {
-                    //ESTADO 1
-                    if (estado == 1) {
-                        
-                    } else {
-                        //ESTADO 2
-                        if (estado == 2) {
-                            
-                        } 
-                    }
-                }
-                String texto3 = "q" + estado + "\n";
-                texto1 = texto1 + (texto2 + texto3);
-            }
-            System.out.println("");
-            //ESTADOS FINAIS DE ACEITAÇÃO
-            if (estado == 1) {
-                SetencaReconhecida.setText("Sentenca Reconhecida");
-                texto1 = texto1 + "\nSentenca Reconhecida";
-            } else {
-                SetencaReconhecida.setText("Sentenca não Reconhecida");
-                texto1 = texto1 + "\nSentenca não Reconhecida";
-            }
-            Reconhecimento.setText(texto1);
+            resposta = automatos.exercicio_i(Sentenca);
+            
+            Reconhecimento.setText(resposta.textoResposta);
+            if(resposta.cadeiaAceita) SetencaReconhecida.setText("Sentenca Reconhecida");
+            else SetencaReconhecida.setText("Sentenca não Reconhecida");
         }
         if (opcao.equals("EXERCÍCIO J") == true) {
 
