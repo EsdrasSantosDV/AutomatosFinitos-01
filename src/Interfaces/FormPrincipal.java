@@ -345,23 +345,29 @@ public class FormPrincipal extends javax.swing.JFrame {
             else SetencaReconhecida.setText("Sentenca não Reconhecida");
         }
         if (opcao.equals("EXERCÍCIO G") == true) {
-
-        }
-        if (opcao.equals("EXERCÍCIO H") == true) {
-
-        }
-        if (opcao.equals("EXERCÍCIO I") == true) {
-            resposta = automatos.exercicio_i(Sentenca);
+            resposta = automatos.exercicio_g(Sentenca);
             
             Reconhecimento.setText(resposta.textoResposta);
             if(resposta.cadeiaAceita) SetencaReconhecida.setText("Sentenca Reconhecida");
             else SetencaReconhecida.setText("Sentenca não Reconhecida");
         }
-        if (opcao.equals("EXERCÍCIO J") == true) {
-
+        if (opcao.equals("EXERCÍCIO H") == true) {
+            resposta = automatos.exercicio_h(Sentenca);
+            
+            Reconhecimento.setText(resposta.textoResposta);
+            if(resposta.cadeiaAceita) SetencaReconhecida.setText("Sentenca Reconhecida");
+            else SetencaReconhecida.setText("Sentenca não Reconhecida");
         }
-
-
+        if (opcao.equals("EXERCÍCIO I") == true) {
+            //NYI
+        }
+        if (opcao.equals("EXERCÍCIO J") == true) {
+            resposta = automatos.exercicio_j(Sentenca);
+            
+            Reconhecimento.setText(resposta.textoResposta);
+            if(resposta.cadeiaAceita) SetencaReconhecida.setText("Sentenca Reconhecida");
+            else SetencaReconhecida.setText("Sentenca não Reconhecida");
+        }
     }//GEN-LAST:event_EXECUTARActionPerformed
 
     /**
