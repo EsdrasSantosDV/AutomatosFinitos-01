@@ -272,7 +272,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 TextArea.setText(Enunciado);
             }
             if (opcao.equals("EXERCÍCIO I") == true) {
-                String enunciadoopcao = "\n  L9 = { w e (E2 U E3)* | w inicia-se com uma letra,\n  possuposo a seguir qualquer\n"
+                String enunciadoopcao = "\n  L9 = { w e (E2 U E3)* | w inicia-se com uma letra,\n  possuindo a seguir qualquer\n"
                         + "  combinação de letras e dígitos";
                 String Enunciado = Enunciadogeral + enunciadoopcao;
                 TextArea.setText(Enunciado);
@@ -359,7 +359,11 @@ public class FormPrincipal extends javax.swing.JFrame {
             else SetencaReconhecida.setText("Sentenca não Reconhecida");
         }
         if (opcao.equals("EXERCÍCIO I") == true) {
-            //NYI
+           resposta = automatos.exercicio_i(Sentenca);
+            
+            Reconhecimento.setText(resposta.textoResposta);
+            if(resposta.cadeiaAceita) SetencaReconhecida.setText("Sentenca Reconhecida");
+            else SetencaReconhecida.setText("Sentenca não Reconhecida");
         }
         if (opcao.equals("EXERCÍCIO J") == true) {
             resposta = automatos.exercicio_j(Sentenca);
