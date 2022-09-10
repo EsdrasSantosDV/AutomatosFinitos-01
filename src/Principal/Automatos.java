@@ -356,7 +356,9 @@ public final class Automatos {
                       case 'a'-> 3;
                         default -> 1;
                     };
-                    case 3-> estado = 3; 
+                    case 3 -> estado =3;
+                   
+                   
                 }
                 texto2 = texto2 + "q" + estado + "\n";
             }
@@ -370,7 +372,7 @@ public final class Automatos {
         
         Resposta resposta = new Resposta("", false);
         
-        if (!erro && (estado==0||estado==1||estado==2||estado==3)){
+        if (!erro && (estado==1||estado==2)){
             texto1 = texto1 + "\nSentenca Reconhecida";
             resposta.textoResposta = texto1;
             resposta.cadeiaAceita = true;
