@@ -345,18 +345,30 @@ public final class Automatos {
                 texto2 = "q" + estado + "->";
                 switch(estado){
                     case 0 -> estado = switch(c){
-                        case 'a'-> 3;
-                        default -> 1;
+                        case 'a'-> 1;
+                        default -> 5;
                     };
                     case 1 -> estado = switch(c){
                         case 'a'-> 2;
-                        default -> 3;
+                        default -> 5;
                     };
                     case 2 -> estado = switch(c){
-                      case 'a'-> 3;
-                        default -> 1;
+                      case 'a'-> 1;
+                        default -> 3;
                     };
-                    case 3 -> estado =3;
+                    case 3 -> estado = switch(c){
+                      case 'a'-> 1;
+                        default -> 4;
+                    };
+                    case 4 -> estado = switch(c){
+                      case 'a'-> 5;
+                        default -> 3;
+                    };
+                    case 5 -> estado = 5;
+                  
+                  
+                  
+                  
                    
                    
                 }
@@ -372,7 +384,7 @@ public final class Automatos {
         
         Resposta resposta = new Resposta("", false);
         
-        if (!erro && (estado==1||estado==2)){
+        if (!erro && estado==3){
             texto1 = texto1 + "\nSentenca Reconhecida";
             resposta.textoResposta = texto1;
             resposta.cadeiaAceita = true;
@@ -403,30 +415,26 @@ public final class Automatos {
                 switch(estado){
                     case 0 -> estado = switch (c) {
                         case 'a' -> 1;
-                        case 'b' -> 4;
-                        default -> 6;
-                    };
-                    case 1 -> estado = switch(c){
-                        case 'a' -> 2;
-                        default -> 6;
-                    };
-                    case 2 -> estado = switch(c){
-                        case 'a' -> 6;
-                        default -> 3;
-                    };
-                    case 3 -> estado = switch(c){
-                        case 'a' -> 2;
-                        default -> 6;
-                    };
-                    case 4 -> estado = switch(c){
-                        case 'b' -> 6;
+                        case 'b' -> 3;
                         default -> 5;
                     };
-                    case 5 -> estado = switch(c){
-                        case 'b' -> 4;
-                        default -> 6;
+                    case 1 -> estado = switch(c){
+                        case 'b' -> 1;
+                        default -> 2;
                     };
-                    case 6 -> estado = 6;
+                    case 2 -> estado = switch(c){
+                        case 'a' -> 1;
+                        default -> 2;
+                    };
+                    case 3 -> estado = switch(c){
+                        case 'b' -> 4;
+                        default -> 3;
+                    };
+                    case 4 -> estado = switch(c){
+                        case 'b' -> 3;
+                        default -> 4;
+                    };
+                    case 5 -> estado =5;
                 }
                 texto2 = texto2 + "q" + estado + "\n";
             }
@@ -439,7 +447,7 @@ public final class Automatos {
         }while(pos < cadeia.length() && !erro);
         
         Resposta resposta = new Resposta("", false);
-        if (!erro && !(estado == 0 || estado == 6)) {
+        if (!erro && (estado==2||estado==3)) {
             texto1 = texto1 + "\nSentenca Reconhecida";
             resposta.textoResposta = texto1;
             resposta.cadeiaAceita = true;
@@ -572,7 +580,8 @@ public final class Automatos {
                     };
                     case 1 -> estado = switch(c){
                         case ',' -> 3;
-                        default -> 8;
+                        case '+','-','e'->8;
+                        default -> 1;
                     };
                     case 2 -> estado = switch(c){
                         case '+','-','e',',' -> 8;
